@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LogEntityRemoves {
@@ -25,7 +26,7 @@ public class LogEntityRemoves {
                 break;
             case File:
                 try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile, true)))) {
-                    writer.append("log at ").append(String.valueOf(new Date())).append(System.lineSeparator());
+                    writer.append("log at ").append(format.format(new Date())).append(System.lineSeparator());
                     writer.append("unloadedEntityList: ").append(String.valueOf(world.unloadedEntityList)).append(System.lineSeparator());
                     writer.append("unloadedTileEntityList: ").append(String.valueOf(world.field_147483_b)).append(System.lineSeparator());
                 } catch (IOException e) {
@@ -41,6 +42,7 @@ public class LogEntityRemoves {
         File,
     }
 
-    private static Logger logger = LogManager.getLogger();
-    private static File logFile = new File(MdfServerUtils.logDir, "log-entity-removes.txt");
+    private static final Logger logger = LogManager.getLogger();
+    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+    private static final File logFile = new File(MdfServerUtils.logDir, "log-entity-removes.txt");
 }
