@@ -1,5 +1,6 @@
 package com.anatawa12.mdfServerUtils;
 
+import com.anatawa12.mdfServerUtils.features.FindAllTiles;
 import com.anatawa12.mdfServerUtils.features.LogEntityRemoves;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -86,6 +87,11 @@ public class MdfUtilCommand extends CommandBase {
                             "state to " + args[1]));
                 },
                 new String[]{"trace", "file", "none"}
+        ));
+        subCommands.put("find-all-tiles", new SubCommand(
+                "<regexp-of-fqn> <sx> <sy> <sz> <ex> <ey> <ez>",
+                1,
+                FindAllTiles::processCommand
         ));
 
         usage = "/mdf-util [" + String.join("|", subCommands.keySet()) + "] <args>";

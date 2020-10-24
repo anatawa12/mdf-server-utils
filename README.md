@@ -18,6 +18,9 @@ Entity, TileEntityの削除をログに流す機能の設定
 
 `none`: 出力しない
 
+#### ``find-all-tiles <regexp-of-fqn>`` ``find-all-tiles <regexp-of-fqn> <start x> <start y> <start z> <end x> <end y> <end z>``
+
+TileEntityをクラス名から探す
 
 ## LICENSE
 
